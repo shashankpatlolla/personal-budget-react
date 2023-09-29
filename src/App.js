@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState }from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import './App.css';
+import axios from 'axios';
+import './App.scss';
 
 import Menu from './Menu/Menu';
 import Hero from './Hero/Hero';
@@ -11,6 +11,21 @@ import AboutPage from './AboutPage/AboutPage';
 import LoginPage from './LoginPage/LoginPage';
 
 function App() {
+
+  const [budgetData, setBudgetData] = useState([]);
+  useEffect(()=>{
+    async function fetchData() {
+      try {
+        const response = await axios.get('http://localhost:3005/budget');
+        const data = response.data.myBudget;
+        // Set the data in the state
+        setBudgetData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+  }
+    fetchData();
+  },[]);
   return (
     <Router>
       <Menu/>
@@ -24,11 +39,10 @@ function App() {
             <LoginPage/>
           </Route>
           <Route path='/'>
-            <HomePage/>
+            <HomePage budgetData={budgetData}/>
           </Route>
         </Switch>
       </div>
-      <HomePage/>
       <Footer/>
     </Router>
   );
