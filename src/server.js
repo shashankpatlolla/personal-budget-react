@@ -21,7 +21,24 @@ const budget ={
     {
         title: 'Rent',
         budget: 300
-    }
+    },
+    {
+        title: 'entertainment',
+        budget: 180
+    },
+    {
+        title: 'Transportation',
+        budget: 220
+    },
+    {
+        title: 'Dining out',
+        budget: 150
+    },
+    {
+        title: 'utilities',
+        budget: 200
+    },
+
 ]};
 /* 
 app.get('/hello',(req,res)=>{

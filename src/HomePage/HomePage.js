@@ -31,7 +31,7 @@ function HomePage({ budgetData }) {
               '#9B59B6',
               '#F1C40F',
               '#34495E',
-              '#E74C3C',
+              '#5DADE2',
             ],
           },
         ],
